@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Accordion } from "react-bootstrap"
+import { Accordion, Dropdown } from "react-bootstrap"
+import DgraphLogo from "../images/graphql-logo.png"
+
 
 const config = require("../../config")
 
@@ -63,10 +65,46 @@ const SideBar = props => {
     return res
   })
 
+  const changeVersion = eventKey => {
+    if (eventKey !== "master") {
+      window.location.assign(process.env.GATSBY_URL + eventKey)
+    } else {
+      window.location.assign(process.env.GATSBY_URL)
+    }
+  }
+
   const list = (
-    <React.Fragment>
+    <div className="side-bar">
+      <div className="page-logo">
+        <Link to="/" className="img-logo header-link">
+          <img src={DgraphLogo} alt="Dgraph logo" />
+        </Link>
+      </div>
+      <Dropdown
+        onSelect={(eventKey, event) => changeVersion(eventKey)}
+        size="xs"
+      >
+        <Dropdown.Toggle
+          variant="light"
+          id="dropdown-basic"
+          bsPrefix="dropdown-basic-customized"
+        >
+          Version
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {process.env.GATSBY_VERSIONS.split(",").map(version => (
+            <Dropdown.Item
+              key={version}
+              active={version === process.env.GATSBY_CURRENT_VERSION}
+              eventKey={version}
+            >
+              {version}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
       <ul className="sidenav">{completeRes}</ul>
-    </React.Fragment>
+    </div>
   )
 
   return list
