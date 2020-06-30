@@ -11,6 +11,7 @@ module.exports = {
   pathPrefix: `/` + process.env.GATSBY_CURRENT_VERSION,
   plugins: [
     `gatsby-plugin-sitemap`,
+
     // `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-gtag`,
@@ -79,5 +80,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-sass`,
   ],
 }

@@ -1,0 +1,34 @@
+@import "../../../style/basestyle.scss";
+
+%SEARCH_TEXT_BOX_COMMON_STYLE {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #e3e8ee;
+  height: 56px;
+  padding-left: 60.8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #e3e8ee;
+  outline: none;
+  z-index: 1;
+  background-image: url("../../../images/icons/search.svg");
+  background-repeat: no-repeat;
+  background-position-x: 41.6px;
+  background-position-y: 50%;
+}
+
+.search-bar-container {
+  .search-text-box {
+    @extend %SEARCH_TEXT_BOX_COMMON_STYLE;
+    width: calc(100vw - #{$GRAPHQL_SCREEN_SIDEBAR_WIDTH_MAX});
+    @media #{$laptop} {
+      width: calc(100vw - #{$GRAPHQL_SCREEN_SIDEBAR_WIDTH_MODERATE});
+    }
+  }
+}

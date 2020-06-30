@@ -3,57 +3,74 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import SearchBar from "./searchBar";
-import "./layout.css"
-import "./seti.css"
-import SideBar from "./sidebar"
+import SearchBar from "./GraphQLDocs/SearchBar/index.js";
+import SideBar from "./GraphQLDocs/SideBar/index";
 import Footer from "./Footer"
 import SideBarRight from "./sidebarright"
 import { Location } from "@reach/router"
 import SEO from "../components/seo"
 
-const Layout = props => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
+import "./layout.scss"
+import "./seti.css"
+
+class Layout extends React.Component {
+  state = {
+    sideBarContentClass: 'Dgraph GraphQL'
+  }
+
+  getSideBarContents = (sideBarClassTitle) => {
+    this.setState({
+      sideBarContentClass: sideBarClassTitle
+    })
+  }
+
+  render() {
+    const { getSideBarContents } = this;
+    const { sideBarContentClass } = this.state;
+
+    return (
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
             }
           }
-        }
-      `}
-      render={data => (
-        <>
-          <SEO
-            title={
-              props.pageContext !== undefined
-                ? props.pageContext.frontmatter.title
-                : "Dgraph GraphQL"
-            }
-          />
-          <div className="side-bar-container">
-            <SideBar />
-          </div>
-          <div className="content-wrap">
-          <SearchBar />
-            <div className="landing-pg">
-              <div style={{ float: "right", paddingTop: "150px" }}>
-                <Location>
-                  {({ location }) => {
-                    return <SideBarRight file={location.pathname} />
-                  }}
-                </Location>
+        `}
+        render={data => (
+          <>
+            <SEO
+              title={
+                this.props.pageContext !== undefined
+                  ? this.props.pageContext.frontmatter.title
+                  : "Dgraph GraphQL"
+              }
+            />
+              <div className="side-bar-container">
+                <SideBar contentTitle={sideBarContentClass} getSideBarContents={(sideBarClassTitle) => getSideBarContents(sideBarClassTitle)} />
               </div>
-              {props.children}
+              <div className="content-wrap">
+                <SearchBar />
+                <div className="landing-pg">
+                  <div>
+                    <Location>
+                      {({ location }) => {
+                        return <SideBarRight file={location.pathname} />
+                      }}
+                    </Location>
+                  </div>
+                  {this.props.children}
+                </div>
+                <Footer />
             </div>
-            <Footer />
-          </div>
-        </>
-      )}
-    />
-  )
+          </>
+        )}
+      />
+    )
+  }
+
 }
 
 Layout.propTypes = {

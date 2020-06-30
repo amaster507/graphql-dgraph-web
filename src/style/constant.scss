@@ -1,0 +1,15 @@
+$MOBILE_SCREEN_SIZE: 991px;
+$MEDIUM_SIZED_LAPTOP_MAX_SIZE: 1024px;
+
+$GRAPHQL_SCREEN_SIDEBAR_WIDTH_MAX: 280px;
+$GRAPHQL_SCREEN_SIDEBAR_WIDTH_MODERATE: 220px;
+
+$laptop: screen
+  and(
+    max-width: $MEDIUM_SIZED_LAPTOP_MAX_SIZE
+  );
+
+$mobile: screen and
+  (
+    max-width: $MOBILE_SCREEN_SIZE
+  );

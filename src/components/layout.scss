@@ -930,16 +930,17 @@ pre tt:after {
   .content-wrap {
     display: flex;
     flex-direction: column;
-    margin-left: 280px;
     padding-top: 60px;
     max-width: calc(100vw - 470px);
+    position: absolute;
+    z-index: 1;
   }
 
-  .sidenav {
+  /* .sidenav {
     width: 160px;
     position: absolute;
     list-style: none;
-  }
+  } */
 }
 
 @media screen and (max-width: 1280px) {
@@ -948,6 +949,7 @@ pre tt:after {
     flex-direction: column;
     margin-left: 200px;
     max-width: 920px;
+    position: absolute;
   }
 
   /* .sidenav {
@@ -1031,88 +1033,11 @@ pre tt:after {
 }
 
 .side-bar-container {
-  position: fixed;
   left: 0;
-  max-width: 280px;
-  width: 280px;
   bottom: 0;
   top: 0;
-  border-right: 1px solid #e3e8ee;
-  padding: 0 24px 0 0;
-}
-@media screen and (max-width: 1024px) {
-  .side-bar-container {
-    position: fixed;
-    left: 0;
-    max-width: 228px;
-    width: 228px;
-    bottom: 0;
-    top: 0;
-    border-right: 1px solid #e3e8ee;
-    padding: 0 24px 0 0;
-  }
-
-  @media screen and (max-width: 1024px) {
-    .sidenav {
-      width: 160px;
-      list-style: none;
-    }
-  }
-
-  .search-bar-container .search-text-box {
-    position: fixed;
-    top: 0;
-    right: 0;
-    border-left: none !important;
-    border-top: none !important;
-    border-right: none !important;
-    border-bottom: 1px solid #e3e8ee;
-    width: calc(100vw - 228px);
-    height: 56px;
-    padding-left: 41.6px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-    color: #e3e8ee;
-    outline: none;
-  }
-}
-
-.side-bar .dropdown-basic-customized {
-  background-color: transparent !important;
-  border: 2px solid rgba(214, 214, 214, 0.5) !important;
-  box-sizing: border-box !important;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 232px;
-  display: flex !important;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px !important;
-  line-height: 16px !important;
-  color: #212121;
-  justify-content: space-between;
-}
-.side-bar .sidenav {
-  padding-top: 32px;
-}
-
-.search-bar-container .search-text-box {
-  position: fixed;
-  top: 0;
   right: 0;
-  border-left: none !important;
-  border-top: none !important;
-  border-right: none !important;
-  border-bottom: 1px solid #e3e8ee;
-  width: calc(100vw - 280px);
-  height: 56px;
-  padding-left: 41.6px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  color: #e3e8ee;
-  outline: none;
+  position: fixed;
+  z-index: 2;
+  background-color: transparent;
 }
