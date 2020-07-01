@@ -112,11 +112,11 @@ const SideBar = props => {
           ))}
         </Dropdown.Menu>
       </Dropdown>
-      <SideBarContentDropDown
+      {/* <SideBarContentDropDown
         getSideBarContents={props.getSideBarContents}
         contentTitle={props.contentTitle}
         setSideBarStylingOverflow={isOpen => setSideBarStylingOverflow(isOpen)}
-      />
+      /> */}
       <ul className="sidenav">{completeRes}</ul>
     </div>
   )

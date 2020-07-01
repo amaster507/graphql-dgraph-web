@@ -52,7 +52,7 @@ class Layout extends React.Component {
                 <SideBar contentTitle={sideBarContentClass} getSideBarContents={(sideBarClassTitle) => getSideBarContents(sideBarClassTitle)} />
               </div>
               <div className="content-wrap">
-                <SearchBar />
+                {/* <SearchBar /> */}
                 <div className="landing-pg">
                   <div>
                     <Location>
