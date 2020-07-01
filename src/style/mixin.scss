@@ -1,0 +1,8 @@
+@mixin dropdown-item-hover {
+  background: linear-gradient(90deg, #ff4200 0.01%, #e50695 99.99%);
+}
+
+@mixin dropdown-item-active {
+  background: linear-gradient(90deg, #ff4200 0.01%, #e50695 99.99%) !important;
+  opacity: 0.8;
+}
